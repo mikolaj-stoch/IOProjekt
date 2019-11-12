@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<div class="container">
+	<h4>Search for products</h4>
+
+	<form action="#" method="post">
+		<!-- FIRST PRODUCT -->
+		<div class="row mb-3">
+			<div class="col-4">
+				<label>Name of the product</label>
+				<input type="text" class="form-control" name="productName1">
+			</div>
+			<div class="col">
+				<label>Quantity</label>
+				<input type="text" class="form-control" name="quantity1">
+			</div>
+			<div class="col">
+				<label>Minimum price</label>
+				<input type="text" class="form-control" name="minPrice1">
+			</div>
+			<div class="col">
+				<label>Maximum price</label>
+				<input type="text" class="form-control" name="maxPrice1">
+			</div>
+			<div class="col">
+				<label>Minimal reputation</label>
+				<input type="text" class="form-control" name="reputation1">
+			</div>
+		</div>
+
+		<!-- SECOND PRODUCT -->
+		<div class="row mb-3">
+			<div class="col-4">
+				<input type="text" class="form-control" name="productName2">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="quantity2">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="minPrice2">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="maxPrice2">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="reputation2">
+			</div>
+		</div>
+
+		<!-- THIRD PRODUCT -->
+		<div class="row mb-3">
+			<div class="col-4">
+				<input type="text" class="form-control" name="productName3">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="quantity3">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="minPrice3">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="maxPrice3">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="reputation3">
+			</div>
+		</div>
+
+		<!-- FOURTH PRODUCT -->
+		<div class="row mb-3">
+			<div class="col-4">
+				<input type="text" class="form-control" name="productName4">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="quantity4">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="minPrice4">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="maxPrice4">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="reputation4">
+			</div>
+		</div>
+
+		<!-- FIFTH PRODUCT -->
+		<div class="row mb-3">
+			<div class="col-4">
+				<input type="text" class="form-control" name="productName5">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="quantity5">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="minPrice5">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="maxPrice5">
+			</div>
+			<div class="col">
+				<input type="text" class="form-control" name="reputation5">
+			</div>
+		</div>
+		<hr class="mb-4">
+		<div class="text-center">
+			<button class="btn btn-primary btn-lg" style="width: 300px" type="submit">Search</button>
+		</div>
+	</form>
+</div>
+
+
+{% endblock %}

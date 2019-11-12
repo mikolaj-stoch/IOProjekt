@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+{% for value in context.tab %}
+<h1>{{value}}</h1>
+{% endfor %}
+
+
+<hr class="mb-4">
+<div class="text-center">
+    <a href="/">
+        <button class="btn btn-primary btn-lg" style="width: 300px" type="submit">Search again</button>
+    </a>
+</div>
+{% endblock %}

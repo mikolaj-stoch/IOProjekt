@@ -1,1 +1,0 @@
-print('Pierwszy tekst w naszym projekcie :)')
