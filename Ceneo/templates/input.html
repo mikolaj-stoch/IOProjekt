@@ -4,27 +4,32 @@
 <div class="container">
 	<h4>Search for products</h4>
 	<div class="row mb-1">
-		<div class="col-4"><label>Name of the product</label></div>
+		<div class="col-5"><label>Name of the product</label></div>
 		<div class="col"><label>Quantity</label></div>
-		<div class="col"><label>Minimum price</label></div>
-		<div class="col"><label>Maximum price</label></div>
-		<div class="col"><label>Minimal reputation</label></div>
+		<div class="col"><label>Min price</label></div>
+		<div class="col"><label>Max price</label></div>
+		<div class="col"><label>Min reputation</label></div>
 	</div>
 
-	<form action="#" method="post">
+	<form name="inputForm" action="#" method="post" onsubmit="return validateForm()">
 		<!-- FIRST PRODUCT -->
 		<div class="row mb-3">
-			<div class="col-4">
-				<input type="text" class="form-control" name="productName1">
+			<div class="col-5">
+				<div class="input-group">
+					<div class="input-group-prepend">
+              			<span class="input-group-text">1</span>
+					</div>
+					<input type="text" class="form-control" name="productName1">
+				</div>
 			</div>
 			<div class="col">
-				<input type="number" min="1" max="20" class="form-control" name="quantity1">
+				<input type="number" min="0" max="20" class="form-control" name="quantity1">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="minPrice1">
+				<input type="number" min="0" class="form-control" name="minPrice1">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="maxPrice1">
+				<input type="number" min="0" class="form-control" name="maxPrice1">
 			</div>
 			<div class="col">
 				<input type="number" min="1" max="5" class="form-control" name="reputation1">
@@ -33,17 +38,22 @@
 
 		<!-- SECOND PRODUCT -->
 		<div class="row mb-3">
-			<div class="col-4">
-				<input type="text" class="form-control" name="productName2">
+			<div class="col-5">
+				<div class="input-group">
+					<div class="input-group-prepend">
+              			<span class="input-group-text">2</span>
+					</div>
+					<input type="text" class="form-control" name="productName2">
+				</div>
 			</div>
 			<div class="col">
-				<input type="number" min="1" max="20" class="form-control" name="quantity2">
+				<input type="number" min="0" max="20" class="form-control" name="quantity2">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="minPrice2">
+				<input type="number" min="0" class="form-control" name="minPrice2">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="maxPrice2">
+				<input type="number" min="0" class="form-control" name="maxPrice2">
 			</div>
 			<div class="col">
 				<input type="number" min="1" max="5" class="form-control" name="reputation2">
@@ -52,17 +62,22 @@
 
 		<!-- THIRD PRODUCT -->
 		<div class="row mb-3">
-			<div class="col-4">
-				<input type="text" class="form-control" name="productName3">
+			<div class="col-5">
+				<div class="input-group">
+					<div class="input-group-prepend">
+              			<span class="input-group-text">3</span>
+					</div>
+					<input type="text" class="form-control" name="productName3">
+				</div>
 			</div>
 			<div class="col">
-				<input type="number" min="1" max="20" class="form-control" name="quantity3">
+				<input type="number" min="0" max="20" class="form-control" name="quantity3">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="minPrice3">
+				<input type="number" min="0" class="form-control" name="minPrice3">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="maxPrice3">
+				<input type="number" min="0" class="form-control" name="maxPrice3">
 			</div>
 			<div class="col">
 				<input type="number" min="1" max="5" class="form-control" name="reputation3">
@@ -71,17 +86,22 @@
 
 		<!-- FOURTH PRODUCT -->
 		<div class="row mb-3">
-			<div class="col-4">
-				<input type="text" class="form-control" name="productName4">
+			<div class="col-5">
+				<div class="input-group">
+					<div class="input-group-prepend">
+              			<span class="input-group-text">4</span>
+					</div>
+					<input type="text" class="form-control" name="productName4">
+				</div>
 			</div>
 			<div class="col">
-				<input type="number" min="1" max="20" class="form-control" name="quantity4">
+				<input type="number" min="0" max="20" class="form-control" name="quantity4">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="minPrice4">
+				<input type="number" min="0" class="form-control" name="minPrice4">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="maxPrice4">
+				<input type="number" min="0" class="form-control" name="maxPrice4">
 			</div>
 			<div class="col">
 				<input type="number" min="1" max="5" class="form-control" name="reputation4">
@@ -90,17 +110,22 @@
 
 		<!-- FIFTH PRODUCT -->
 		<div class="row mb-3">
-			<div class="col-4">
-				<input type="text" class="form-control" name="productName5">
+			<div class="col-5">
+				<div class="input-group">
+					<div class="input-group-prepend">
+              			<span class="input-group-text">5</span>
+					</div>
+					<input type="text" class="form-control" name="productName5">
+				</div>
 			</div>
 			<div class="col">
-				<input type="number" min="1" max="20" class="form-control" name="quantity5">
+				<input type="number" min="0" max="20" class="form-control" name="quantity5">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="minPrice5">
+				<input type="number" min="0" class="form-control" name="minPrice5">
 			</div>
 			<div class="col">
-				<input type="number" class="form-control" name="maxPrice5">
+				<input type="number" min="0" class="form-control" name="maxPrice5">
 			</div>
 			<div class="col">
 				<input type="number" min="1" max="5" class="form-control" name="reputation5">
@@ -112,4 +137,44 @@
 		</div>
 	</form>
 </div>
+{% endblock %}
+
+{% block script %}
+<script>
+	function validateForm(){
+		var emptyFields = 0;
+		for(var i=1; i<6; i++){
+			var productName = document.forms["inputForm"]["productName" + i];
+			var quantity = document.forms["inputForm"]["quantity" + i];
+			var minPrice = document.forms["inputForm"]["minPrice" + i];
+			var maxPrice = document.forms["inputForm"]["maxPrice" + i];
+
+			if (productName.value == ""){
+				emptyFields++;
+			}
+
+			if (productName.value == "" && quantity.value > 0){
+				window.alert("Enter the name of product no " + i + ".");
+				return false;
+			}
+
+			if (productName.value != "" && quantity.value == 0){
+				window.alert("Enter the quantity of product no " + i + ".");
+				return false;
+			}
+
+			if (minPrice.value > maxPrice.value){
+				window.alert("Minimum price of product no " + i + " is higher than maximum.");
+				return false;
+			}
+		}
+
+		if(emptyFields == 5){
+			window.alert("Enter at least one product.");
+			return false;
+		}
+
+		return true;
+	}
+</script>
 {% endblock %}
