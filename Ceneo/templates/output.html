@@ -2,33 +2,37 @@
 {% block content %}
 
 <div class="row mb-1">
-    <div class="col-5"><label>Name of the product</label></div>
-    <div class="col"><label>Quantity</label></div>
-    <div class="col"><label>Min price</label></div>
-    <div class="col"><label>Max price</label></div>
-    <div class="col"><label>Min reputation</label></div>
-</div>
-
-{% for value in context %}
-    <div class="row mb-3">
-        <div class="col-5">
-            {{value[0]}}
-        </div>
-        <div class="col">
-            {{value[1]}}
-        </div>
-        <div class="col">
-            {{value[2]}}
-        </div>
-        <div class="col">
-			{{value[3]}}
-        </div>
-        <div class="col">
-            {{value[4]}}
+    <div class="col-8">
+        <div class="row mb-1">
+            <div class="col-5"><label>Name of the product</label></div>
+            <div class="col"><label>Price per unit</label></div>
+            <div class="col"><label>Link</label></div>
         </div>
     </div>
-{% endfor %}
-
+    <div class="col-4">
+        <div class="col"><label>Sum of costs</label></div>
+    </div>
+</div>
+<div class="row mb-1">
+    <div class="col-8">
+    {% for value in context[:-1] %}
+        <div class="row mb-3">
+            <div class="col-5">
+                {{value[0]}}
+            </div>
+            <div class="col">
+                {{value[1]}}
+            </div>
+            <div class="col">
+                <a href="http://{{value[2]}}">Link</a>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="col-4">
+        {{context[-1]}}
+    </div>
+</div>
 
 <hr class="mb-4">
 <div class="text-center">

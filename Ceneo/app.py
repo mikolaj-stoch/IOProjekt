@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request
+import temporary
 
 app = Flask(__name__)
 
@@ -15,8 +16,8 @@ def home():
             temp_data.append(request.form[f'maxPrice{i}'])
             temp_data.append(request.form[f'reputation{i}'])
             input_data.append(temp_data)
-        # miejsce na wywolanie funkcji z argumentem input_data
-        return render_template("output.html", context=input_data)
+        output_data = temporary.search(input_data)  # TEMPORARY FUNCTION ! ! !
+        return render_template("output.html", context=output_data)
     else:
         return render_template("input.html")
 
