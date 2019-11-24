@@ -1,0 +1,5 @@
+from search_page.search_page.spiders.search_page_spider import run_search_page_spider
+from list_of_products.list_of_products.spiders.list_of_products_spider import run_list_of_products_spider
+
+# run_search_page_spider()
+run_list_of_products_spider()
