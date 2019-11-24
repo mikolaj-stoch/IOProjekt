@@ -1,16 +1,17 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy.crawler import CrawlerProcess
-from list_of_products.list_of_products.items import ListOfProductsItem
-# from list_of_products.items import ListOfProductsItem
-
+from list_of_products.items import ListOfProductsItem
+from list_of_products.database_connector import connect_old_database
 
 class ListOfProductsSpiderSpider(scrapy.Spider):
-    name = 'list_of_products_spider'
 
-    # product_id = database.connect_old_database(0, 2500)
-    # url = 'http://ceneo.pl' + product_id
-    url = 'https://www.ceneo.pl/85615943'
+    name = 'list_of_products_spider'
+    print("Podaj widelki")
+    price_min = input()
+    price_max = input()
+    product_id = connect_old_database(price_min,price_max)
+    url = 'http://ceneo.pl' + product_id
     start_urls = [url]
 
     def parse(self, response):
@@ -19,6 +20,9 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
         price_one_product = response.css('.product-price.go-to-shop .value::text').extract()
         website_link = response.css('.cell-actions .btn-cta::attr(href)').extract()
         shop_rating = response.css('.js_no-conv .score-marker--s::attr(style)').extract()
+        # delivery_information = response.css('.offer-content::text').extract()
+        # print(delivery_information)
+        # print(len(delivery_information))
         number_of_reviews = response.css('.dotted-link.js_no-conv::text').extract()
 
         for x in range(len(shop_rating)):
@@ -37,11 +41,4 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
             items['shop_rating'] = shop_rating[x]
             items['number_of_reviews'] = int(number_of_reviews[x])
             yield items
-
-
-def run_list_of_products_spider():
-    process = CrawlerProcess()
-    process.crawl(ListOfProductsSpiderSpider)
-    process.start()
-
 

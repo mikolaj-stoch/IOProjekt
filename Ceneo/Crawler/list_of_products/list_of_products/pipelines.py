@@ -13,7 +13,6 @@ class ListOfProductsPipeline(object):
         self.create_table()
 
     def create_connection(self):
-        print("Heu Big Bro")
         self.conn = sqlite3.connect("products_final.db")
         self.curr = self.conn.cursor()
 

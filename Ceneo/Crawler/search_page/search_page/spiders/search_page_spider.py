@@ -1,7 +1,8 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy.crawler import CrawlerProcess
-from search_page.search_page.items import SearchPageItem
+from search_page.items import SearchPageItem
+import sqlite3
 
 
 class SearchPageSpiderSpider(scrapy.Spider):
@@ -33,10 +34,5 @@ class SearchPageSpiderSpider(scrapy.Spider):
                 yield items
 
 
-def run_search_page_spider():
-    process = CrawlerProcess(settings={
-        'FEED_FORMAT': 'json',
-        'FEED_URI': 'items.json'
-    })
-    process.crawl(SearchPageSpiderSpider)
-    # process.start()
+
+
