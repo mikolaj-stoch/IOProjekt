@@ -9,6 +9,7 @@ from selenium import webdriver # To w fazie beta - ma pozwolic w JavaScripcie do
 class ListOfProductsSpiderSpider(scrapy.Spider):
     # Drugi Crawler który skrapuje produkt z bazy danych otrzymanej od search page - z listy wyszukiwan.
     # Dziala ciut inaczej niz tamtem - w funkcji parse.
+    name = 'list_of_products_spider'
     print("Podaj widelki")
     price_min = input()
     price_max = input()
