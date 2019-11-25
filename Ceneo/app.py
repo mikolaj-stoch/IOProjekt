@@ -8,7 +8,7 @@ app = Flask(__name__)
 def home():
     if request.method == "POST":
         input_data = []
-        for i in range(1, 6):
+        for i in range(5):
             temp_data = []
             temp_data.append(request.form[f'productName{i}'])
             temp_data.append(request.form[f'quantity{i}'])

@@ -23,9 +23,12 @@ def search(input_data):
             else:
                 price = random.randint(10, 200)
             link = random.choice(["www.google.com", "www.onet.pl", "www.facebook.com", "www.wp.pl"])
-            sum_of_costs = sum_of_costs + price*quantity + random.randint(10, 20)
+            delivery_cost = random.randint(10, 20)
+            sum_of_costs = sum_of_costs + price*quantity + delivery_cost
             tmp.append(name)
+            tmp.append(quantity)
             tmp.append(price)
+            tmp.append(delivery_cost)
             tmp.append(link)
             result.append(tmp)
         result.append(sum_of_costs)
