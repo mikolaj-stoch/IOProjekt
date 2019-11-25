@@ -6,7 +6,8 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import sqlite3
 
-
+# Pipeline sluzy nam do przychwytywania w czasie crawlowania obiektow i zapisywania ich do baz dancyh
+# Komendy z sq3lite, chyba raczej easy do zrozumienia
 class ListOfProductsPipeline(object):
     def __init__(self):
         self.create_connection()

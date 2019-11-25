@@ -1,0 +1,29 @@
+INFO:
+S¹ dwa scrawlery. Jeden s³u¿y do wydobycia z danych ze strony wyszukiwania np. https://www.ceneo.pl/Smartfony;szukaj-huawei+p30.
+Drugi do konkretnego produktu np. https://www.ceneo.pl/77761863
+
+Klas jest du¿o. To dlatego ¿e scrapy ( modu³ który s³u¿y do scrawlowania ) automatycznie tyle ich tworzy ( przy u¿yciu komendy scrapy startproject nazwa - tak sie zaczyna zabAWa ze Scrapy. )
+
+Nie tworze nowych klas. Tylko je edytuje i rozszerzam.
+Odpowiednikiem klasy Main w ka¿dym scrawlerze jest klasa - "nazwa_pajaka_spider.py" np. dla search page jest to search_page_spider.py. W folderze spiders.
+Tam daje potrzebne informacje - URL, i znaczniki w CSS które chcemy wycinac.
+
+Znaczniki CSS zdobywam przy u¿yciu selector gadget rozszerzenia w google chrome. Dobrze to jest pokazane na tutorialu do którego dam link.
+
+Oprócz tego klasy:
+- item - definicja pól które scrapujemy
+- middlewares - nie u¿ywam
+- pipelines - do przechwytywania danych w czasie crawlowania i zapisu - w naszym przypadku do baz danych
+- settings
+
+Pajaka urochamiamy komenda scrapy crawl nazwa_pajaka_spider. Czemu tak ? Nie wiem. Defaultowo tak scrapy jest zaprojektowany.
+Jest mo¿liwoœæ konwersji do uruchamiania z .py, ale dzialalo to koslawo. Naszym koncowym celem i tak jest zdobycie pliku z baz danych dlatego zdecydowalem sie na uzycie skryptu BATa.
+
+Tutorial: https://www.youtube.com/watch?v=ve_0h4Y8nuI&list=PLhTjy8cBISEqkN-5Ku_kXG4QW33sxQo0t
+
+TO DO
+- W Scrapy, list_of_products - wydobycie danych o dostawie przy u¿yciu selenium - Miko³aj
+- W Scrapy, list_of_products - odczytanie kolejnych produktow przy u¿yciu linku z wynikow ze strony wyszukiwania ( gdy ich brakuje w finalnej bazie ) - Miko³aj
+- TESTOWANIE - WSZYSCY !! Ale to potem :)))
+- Po³¹cznie sensowne GUI i wyniku z baz danych ( sortowanie finalnej bazy danych - Pawe³ ?) - Pawe³, Mati ?
+- Sklejenie wszystkiego w kupê zeby dzia³a³o z buta - wszycy !! Ale to potem :)))

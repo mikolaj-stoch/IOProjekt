@@ -5,7 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import sqlite3
-
+# Przechwytujemy dane ze strumienia i zapisujemy do bazy danych. Komendy z sq3lite.
 class SearchPagePipeline(object):
 
     def __init__(self):

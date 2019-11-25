@@ -7,7 +7,7 @@
 
 import scrapy
 
-
+# Tutaj po prostu okreslamy pola jakie chcemy crawlowac.
 class ListOfProductsItem(scrapy.Item):
     name_of_object = scrapy.Field()
     price_one_product = scrapy.Field()

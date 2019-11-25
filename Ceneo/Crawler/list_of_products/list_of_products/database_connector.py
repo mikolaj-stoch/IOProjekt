@@ -1,6 +1,6 @@
 import sqlite3
 
-
+# Funckja do laczenia z baza danych - chyba zrozumiale wiekszosc ?
 def connect_old_database(price_min, price_maks):
     conn = sqlite3.connect('products_from_search_page.db')
     curr = conn.cursor()
