@@ -52,11 +52,11 @@ class SearchPageSpiderSpider(scrapy.Spider):
                     yield items
         if counter_button == 0:
             print("Na stronie znajduja sie same oferty z przysciskiem 'Kup teraz'.")
-        ''''
+
         if all_products == []:
             all_products_first_search_forced_list_view = response.url + ";0191"
             yield response.follow(all_products_first_search_forced_list_view, callback=self.parse)
-        '''
+
 
 
 

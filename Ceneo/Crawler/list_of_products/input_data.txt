@@ -1,1 +1,1 @@
-{"input": [{"name": "xiaomi redmi note", "quantity": "1", "minimum_price": "700", "maximum_price": "", "reputation": "3.5"}]}
+{"input": [{"name": "Huawei P30", "quantity": "1", "minimum_price": "2000", "maximum_price": "3000", "reputation": "4"}]}

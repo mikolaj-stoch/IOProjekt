@@ -30,13 +30,15 @@ def check():
         data = json.load(json_file)
         for info in data['input']:
             reputation = info['reputation']
-            print(reputation)
-    conn = sqlite3.connect('products_final.db')
+            name = info['name']
+    name_database = name + ".db"
+    conn = sqlite3.connect(name_database)
     curr = conn.cursor()
     curr.execute("""SELECT count(*) FROM products where shop_rating > ? and shop_reviews_number > 20;""", (
         [reputation]
     ))
     result = int(curr.fetchone()[0])
+    print(result)
     return result
 
 def add_next_link():
