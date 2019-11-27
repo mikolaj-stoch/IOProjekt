@@ -14,9 +14,9 @@ number_of_used_links = 0
 def get_row():
     conn = sqlite3.connect('products_from_search_page.db')
     curr = conn.cursor()
-    curr.execute("""SELECT count(*) FROM products order by price , number_of_shops DESC;""",())
+    curr.execute("""SELECT count(*) FROM products order by number_of_shops DESC, price;""",())
     number_of_rows = curr.fetchone()
-    curr.execute("""SELECT website_link FROM products order by price , number_of_shops DESC;""", (
+    curr.execute("""SELECT website_link FROM products order by number_of_shops DESC, price;""", (
     ))
     websites_links = curr.fetchmany(int(number_of_rows[0]))
     try:

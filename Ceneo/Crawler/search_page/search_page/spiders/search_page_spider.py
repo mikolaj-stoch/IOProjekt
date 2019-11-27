@@ -20,7 +20,12 @@ class SearchPageSpiderSpider(scrapy.Spider):
     # max_price = input()
 
     name_of_product = name_of_product.replace(" ", "+")
-    price_range = ";m" + str(min_price) + ";n"+ str(max_price)
+    if min_price == '':
+        min_price = 0
+    if max_price == '':
+        price_range = ";m" + str(min_price) + ";n"
+    else:
+        price_range = ";m" + str(min_price) + ";n"+ str(max_price)
 
     url = 'https://www.ceneo.pl/;szukaj-' + name_of_product + price_range + ';0112-0.htm'
     start_urls = [url]

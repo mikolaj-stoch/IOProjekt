@@ -18,6 +18,8 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
     def parse(self, response):
         if self.product_id != '':
             items = ListOfProductsItem()
+
+            backup_name = response.css('.default-cursor::text').extract()
             name_of_object = response.css('.short-name__txt::text').extract()
             price_one_product = response.css('.product-price.go-to-shop .value::text').extract()
             # website_link = response.css('.cell-actions .btn-cta::attr(href)').extract()
@@ -52,6 +54,9 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
             for x in range(len(number_of_reviews)):
                 number_of_reviews[x] = number_of_reviews[x][:-7]
 
+            for x in range (len(name_of_object)):
+                if name_of_object[x] == 'Odpowiedź jest pomocna?':
+                    name_of_object[x] = backup_name[0]
 
             for x in range(len(price_one_product)):
                 items['name_of_object'] = name_of_object[x]

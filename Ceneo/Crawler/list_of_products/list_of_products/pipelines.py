@@ -5,6 +5,7 @@
 # Don't forget to add your pipeline to the ITEM_PIPELINES setting
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import sqlite3
+import json
 
 # Pipeline sluzy nam do przychwytywania w czasie crawlowania obiektow i zapisywania ich do baz dancyh
 # Komendy z sq3lite, chyba raczej easy do zrozumienia
@@ -14,7 +15,12 @@ class ListOfProductsPipeline(object):
         self.create_table()
 
     def create_connection(self):
-        self.conn = sqlite3.connect("products_final.db")
+        with open('input_data.txt') as json_file:
+            data = json.load(json_file)
+            for info in data['input']:
+                name = info['name']
+        name_database = name + ".db"
+        self.conn = sqlite3.connect(name_database)
         self.curr = self.conn.cursor()
 
     def create_table(self):
