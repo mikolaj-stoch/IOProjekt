@@ -14,4 +14,5 @@ class SearchPageItem(scrapy.Item):
     price = scrapy.Field()
     button_name = scrapy.Field()
     website_link = scrapy.Field()
+    number_of_shops = scrapy.Field()
     pass

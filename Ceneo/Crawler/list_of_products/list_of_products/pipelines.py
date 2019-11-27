@@ -22,7 +22,9 @@ class ListOfProductsPipeline(object):
         self.curr.execute("""create table products(
                              object_name text,
                              price int,
+                             delivery_info text,
                              website_link text,
+                             shop_name text,
                              shop_rating int,
                              shop_reviews_number int
                              )""")
@@ -32,10 +34,12 @@ class ListOfProductsPipeline(object):
         return item
 
     def store_db(self,item):
-        self.curr.execute(""" insert into products values (?,?,?,?,?)""",(
+        self.curr.execute(""" insert into products values (?,?,?,?,?,?,?)""",(
             item['name_of_object'],
             item['price_one_product'],
+            item['delivery_info'],
             item['website_link'],
+            item['shop_name'],
             item['shop_rating'],
             item['number_of_reviews']
         ))

@@ -21,7 +21,8 @@ class SearchPagePipeline(object):
         self.curr.execute("""create table products(
                              object_name text,
                              price int,
-                             website_link text
+                             website_link text,
+                             number_of_shops int
                              )""")
 
     def process_item(self, item, spider):
@@ -29,9 +30,10 @@ class SearchPagePipeline(object):
         return item
 
     def store_db(self,item):
-        self.curr.execute(""" insert into products values (?,?,?)""",(
+        self.curr.execute(""" insert into products values (?,?,?,?)""",(
             item['object_name'][0],
             item['price'][0],
-            item['website_link']
+            item['website_link'],
+            item['number_of_shops'][0]
         ))
         self.conn.commit()
