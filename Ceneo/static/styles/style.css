@@ -1,3 +1,21 @@
+.logo {
+	width: 50%;
+	height: 50%;
+}
+
+.container-fluid {
+    padding: 0px;
+}
+
 .btn {
     width: 300px;
 }
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+}
+

@@ -1,57 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
 
+<div class="container">
 
-<div class="row mb-1 text-center">
-    <div class="col-10">
-        <div class="row mb-1">
-            <div class="col-4"><label><b>Name of the product</b></label></div>
-            <div class="col"><label><b>Quantity</b></label></div>
-            <div class="col"><label><b>Price per unit</b></label></div>
-            <div class="col"><label><b>Delivery cost</b></label></div>
-            <div class="col"><label><b>Link</b></label></div>
+    <div class="row mb-1 text-center">
+        <div class="col-10">
+            <div class="row mb-1">
+                <div class="col-4"><label><b>Product</b></label></div>
+                <div class="col"><label><b>Quantity</b></label></div>
+                <div class="col"><label><b>Price per unit</b></label></div>
+                <div class="col"><label><b>Delivery cost</b></label></div>
+                <div class="col"><label><b>Link</b></label></div>
+            </div>
+        </div>
+        <div class="col">
+            <label><b>Sum of costs</b></label>
         </div>
     </div>
-    <div class="col">
-        <label><b>Sum of costs</b></label>
+
+    <div class="row mb-1 text-center">
+        <div class="col-10">
+            {% for value in context[:-1] %}
+                {% if value[0] %}
+                    <div class="row mb-3">
+                        <div class="col-4">
+                            {{value[0]}}
+                        </div>
+                        <div class="col">
+                            {{value[1]}}
+                        </div>
+                        <div class="col">
+                            {{value[2]}} zł
+                        </div>
+                        <div class="col">
+                            {{value[3]}} zł
+                        </div>
+                        <div class="col">
+                            <a href="http://{{value[4]}}">Link</a>
+                        </div>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="col">
+            {{context[-1]}} zł
+        </div>
     </div>
-</div>
 
+    <hr class="mb-4">
 
-<div class="row mb-1 text-center">
-    <div class="col-10">
-        {% for value in context[:-1] %}
-            {% if value[0] %}
-                <div class="row mb-3">
-                    <div class="col-4">
-                        {{value[0]}}
-                    </div>
-                    <div class="col">
-                        {{value[1]}}
-                    </div>
-                    <div class="col">
-                        {{value[2]}} zł
-                    </div>
-                    <div class="col">
-                        {{value[3]}} zł
-                    </div>
-                    <div class="col">
-                        <a href="http://{{value[4]}}">Link</a>
-                    </div>
-                </div>
-            {% endif %}
-        {% endfor %}
+    <div class="text-center">
+        <a href="">
+            <button class="btn btn-dark btn-lg" type="submit">Search again</button>
+        </a>
     </div>
-    <div class="col">
-        {{context[-1]}} zł
-    </div>
-</div>
 
-
-<hr class="mb-4">
-<div class="text-center">
-    <a href="/">
-        <button class="btn btn-primary btn-lg" type="submit">Search again</button>
-    </a>
 </div>
 {% endblock %}
