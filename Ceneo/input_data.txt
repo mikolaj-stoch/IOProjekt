@@ -1,1 +1,0 @@
-{"input": [{"name": "produkt 1", "quantity": "1", "minimum_price": "", "maximum_price": "", "reputation": ""}]}
