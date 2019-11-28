@@ -1,13 +1,16 @@
 {% extends "base.html" %}
 
 {% block content %}
+<div>
+	<section class="jumbotron text-center">
+		<h3 class="jumbotron-heading">Search for products</h3>
+	</section>
+</div>
+
 <div class="container">
 
+	<hr class="mb-3">
 	<div class="row mb-2">
-		<h3>Search for products</h3>
-	</div>
-
-	<div class="row mb-1">
 		<div class="col-5"><label>Name of the product</label></div>
 		<div class="col"><label>Quantity</label></div>
 		<div class="col"><label>Min price [zł]</label></div>
@@ -42,7 +45,7 @@
 		{% endfor %}
 		<hr class="mb-3">
 		<div class="mb-3 text-center">
-			<button class="btn btn-dark btn-lg" type="submit">Search</button>
+			<button class="btn btn-warning btn-lg" type="submit">Search</button>
 		</div>
 	</form>
 
@@ -50,5 +53,5 @@
 {% endblock %}
 
 {% block script %}
-<script src="{{ url_for('static', filename="scripts/input.js") }}"></script>
+<script src="{{ url_for('static', filename="scripts/search.js") }}"></script>
 {% endblock %}

@@ -4,9 +4,12 @@ import json
 
 app = Flask(__name__)
 
-
-@app.route("/", methods=["POST", "GET"])
+@app.route("/")
 def home():
+    return render_template("home.html")
+
+@app.route("/search", methods=["POST", "GET"])
+def search():
     if request.method == "POST":
         data = {'input': []}
         for i in range(5):
@@ -23,7 +26,7 @@ def home():
         output_data = temporary.search()  # TEMPORARY FUNCTION ! ! !
         return render_template("output.html", context=output_data)
     else:
-        return render_template("input.html")
+        return render_template("search.html")
 
 
 if __name__ == "__main__":

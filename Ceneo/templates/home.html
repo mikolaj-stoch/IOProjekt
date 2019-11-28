@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block link %}
+<link rel="stylesheet" href="{{ url_for('static', filename="styles/home.css") }}" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div>
+    <section class="jumbotron text-center">
+        <div class="container">
+          <h1 class="jumbotron-heading">Ceneo Searcher</h1>
+          <p class="lead text-muted">Search for several products at the same time and get the best set of offers</p>
+          <p>
+            <a href="{{ url_for("search") }}" class="btn btn-warning btn-lg my-2">Search!</a>
+          </p>
+        </div>
+      </section>
+    <p class="text-warning lead head-container_title"></p>
+</div>
+
+<div class="container">
+    <div class="text-center">
+        <h2>How it works?</h2>
+    </div>
+    <div class="row mb-1">
+        <div class="col-lg-4">
+            <hr class="mb-1">
+            <div class="center">
+                <img class="rounded-circle" src="{{ url_for('static', filename="images/input_icon.png") }}" width="140" height="140">
+                <h4><br>Enter what you are searching</h4>
+            </div>
+            <div class="justify">
+                <p>In the "Search" section, enter a maximum of 5 products that interest you.
+                    Enter the quantity of each, you can also specify the minimum and maximum price
+                    and the minimum reputation of the seller. Press the "Search" button.</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <hr class="mb-1">
+            <div class="center">
+                <img class="rounded-circle" src="{{ url_for('static', filename="images/process_icon.png") }}" width="140" height="140">
+                <h4><br>Give us a moment</h4>
+            </div>
+            <div class="justify">
+                <p>Our algorithms are starting to search for your products.
+                    This process should take up to 15 seconds.</p>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <hr class="mb-1">
+            <div class="center">
+                <img class="rounded-circle" src="{{ url_for('static', filename="images/output_icon.png") }}" width="140" height="140">
+                <h4><br>Get the result</h4>
+            </div>
+            <div class="justify">
+                <p>As a result, you get three sets of searched products with total costs and links to auctions.
+                    The delivery costs are also included. All you have to do is visit stores and order products.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
