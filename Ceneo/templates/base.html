@@ -33,13 +33,19 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for("home") }}">Home</a>
+                            <a class="nav-link" href="{{ url_for("home") }}">
+                                <p class="lead text-light">Home</p>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url_for("search") }}">Search</a>
+                            <a class="nav-link" href="{{ url_for("search") }}">
+                                <p class="lead text-light">Search</p>
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Authors</a>
+                            <a class="nav-link" href="{{ url_for("authors") }}">
+                                <p class="lead text-light">Authors</p>
+                            </a>
                         </li>
                     </ul>
                 </div>

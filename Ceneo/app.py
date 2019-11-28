@@ -4,9 +4,11 @@ import json
 
 app = Flask(__name__)
 
+
 @app.route("/")
 def home():
     return render_template("home.html")
+
 
 @app.route("/search", methods=["POST", "GET"])
 def search():
@@ -27,6 +29,11 @@ def search():
         return render_template("output.html", context=output_data)
     else:
         return render_template("search.html")
+
+
+@app.route("/authors")
+def authors():
+    return render_template("authors.html")
 
 
 if __name__ == "__main__":

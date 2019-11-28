@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block link %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+{% endblock %}
+
+{% block content %}
+
+<div>
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Authors</h1>
+            <p class="lead text-muted">The application was developed by ICT students of
+                AGH University of Science and Technology as a project on Software Engineering course.</p>
+        </div>
+    </section>
+    <hr class="mb-5">
+</div>
+
+<div class="container">
+    <div class="row mb-1">
+        <div class="col-6 text-right">
+            <p class="lead text-muted">Paweł Czaja</p>
+            <hr class="mb-1">
+            <p class="lead text-muted">Mateusz Morawiec</p>
+            <hr class="mb-1">
+            <p class="lead text-muted">Mikołaj Stoch</p>
+        </div>
+        <div class="col-6">
+            <a href="https://github.com/GitHub-Pawel">
+                <p class="lead text-muted"><i class="fa fa-github"></i> github.com/GitHub-Pawel</p>
+            </a>
+            <hr class="mb-1">
+            <a href="https://github.com/mmorawiec03">
+                <p class="lead text-muted"><i class="fa fa-github"></i> github.com/mmorawiec03</p>
+            </a>
+            <hr class="mb-1">
+            <a href="https://github.com/miko083">
+                <p class="lead text-muted"><i class="fa fa-github"></i> github.com/miko083</p>
+            </a>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

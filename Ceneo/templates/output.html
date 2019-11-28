@@ -6,15 +6,15 @@
     <div class="row mb-1 text-center">
         <div class="col-10">
             <div class="row mb-1">
-                <div class="col-4"><label><b>Product</b></label></div>
-                <div class="col"><label><b>Quantity</b></label></div>
-                <div class="col"><label><b>Price per unit</b></label></div>
-                <div class="col"><label><b>Delivery cost</b></label></div>
-                <div class="col"><label><b>Link</b></label></div>
+                <div class="col-4"><p class="lead text-muted"><b>Product</b></p></div>
+                <div class="col"><p class="lead text-muted"><b>Quantity</b></p></div>
+                <div class="col"><p class="lead text-muted"><b>Price per unit</b></p></div>
+                <div class="col"><p class="lead text-muted"><b>Delivery cost</b></p></div>
+                <div class="col"><p class="lead text-muted"><b>Link</b></p></div>
             </div>
         </div>
         <div class="col">
-            <label><b>Sum of costs</b></label>
+            <p class="lead text-muted"><b>Sum of costs</b></p>
         </div>
     </div>
 
@@ -24,26 +24,26 @@
                 {% if value[0] %}
                     <div class="row mb-3">
                         <div class="col-4">
-                            {{value[0]}}
+                            <p class="lead text-muted">{{value[0]}}</p>
                         </div>
                         <div class="col">
-                            {{value[1]}}
+                            <p class="lead text-muted">{{value[1]}}</p>
                         </div>
                         <div class="col">
-                            {{value[2]}} zł
+                            <p class="lead text-muted">{{value[2]}} zł</p>
                         </div>
                         <div class="col">
-                            {{value[3]}} zł
+                            <p class="lead text-muted">{{value[3]}} zł</p>
                         </div>
                         <div class="col">
-                            <a href="http://{{value[4]}}">Link</a>
+                            <a href="http://{{value[4]}}"><p class="lead text-muted">Link</p></a>
                         </div>
                     </div>
                 {% endif %}
             {% endfor %}
         </div>
         <div class="col">
-            {{context[-1]}} zł
+            <p class="lead text-muted">{{context[-1]}} zł</p>
         </div>
     </div>
 
