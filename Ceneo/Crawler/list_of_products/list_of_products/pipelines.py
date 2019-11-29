@@ -27,7 +27,7 @@ class ListOfProductsPipeline(object):
         self.curr.execute("""drop table if exists products""")
         self.curr.execute("""create table products(
                              object_name text,
-                             price int,
+                             price float,
                              delivery_info text,
                              website_link text,
                              shop_name text,

@@ -20,7 +20,7 @@ class SearchPagePipeline(object):
         self.curr.execute("""drop table if exists products""")
         self.curr.execute("""create table products(
                              object_name text,
-                             price int,
+                             price float,
                              website_link text,
                              number_of_shops int
                              )""")
@@ -32,7 +32,7 @@ class SearchPagePipeline(object):
     def store_db(self,item):
         self.curr.execute(""" insert into products values (?,?,?,?)""",(
             item['object_name'][0],
-            item['price'][0],
+            item['price'],
             item['website_link'],
             item['number_of_shops'][0]
         ))

@@ -22,6 +22,7 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
             backup_name = response.css('.default-cursor::text').extract()
             name_of_object = response.css('.short-name__txt::text').extract()
             price_one_product = response.css('.product-price.go-to-shop .value::text').extract()
+            penny = response.css('.penny::text').extract()
             # website_link = response.css('.cell-actions .btn-cta::attr(href)').extract()
             website_link = response.css('.btn-cta.go-to-shop::attr(href)').extract()
             shop_name = response.css('.js_product-offer-link::text').extract()
@@ -60,7 +61,7 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
 
             for x in range(len(price_one_product)):
                 items['name_of_object'] = name_of_object[x]
-                items['price_one_product'] = price_one_product[x]
+                items['price_one_product'] = float(price_one_product[x]) + float(penny[x][1:]) * 0.01
                 items['website_link'] = website_link[x]
                 items['shop_name'] = shop_name[x]
                 items['delivery_info'] = final_delivery_information[x]

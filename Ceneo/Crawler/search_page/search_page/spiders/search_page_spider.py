@@ -42,11 +42,13 @@ class SearchPageSpiderSpider(scrapy.Spider):
             button_name = product.css('.js_force-conv::text').extract()
             website_link = product.css('.js_force-conv::attr(href)').get()
             number_of_shops = product.css('.shop-numb::text').extract()
+            penny = product.css('.penny::text').extract()
             if button_name == ['Porównaj ceny']:
-                counter_button = counter_button + 1;
+                counter_button = counter_button + 1
                 if website_link[-9:] != 'promotion':
                     items['object_name'] = object_name
-                    items['price'] = price
+                    # print(penny[1:])
+                    items['price'] = float(price[0]) + float(penny[0][1:]) * 0.01
                     items['website_link'] = website_link
                     items['number_of_shops'] = number_of_shops[0][2:4]
                     yield items

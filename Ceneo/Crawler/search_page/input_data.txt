@@ -1,1 +1,1 @@
-{"input": [{"name": "Huawei P30", "quantity": "1", "minimum_price": "2000", "maximum_price": "3000", "reputation": "4"}]}
+{"input": [{"name": "chleb", "quantity": "1", "minimum_price": "0.1", "maximum_price": "10000", "reputation": "4"}]}
