@@ -5,11 +5,11 @@ import json
 def search():
     result = []
     sum_of_costs = 0
+    output_data = {'products': [], 'costs': int}
     with open('input_data.txt') as json_file:
-        data = json.load(json_file)
+        input_data = json.load(json_file)
 
-        for product in data['input']:
-            tmp = []
+        for product in input_data['products']:
             name = None
             name = product['name']
             quantity = None
@@ -29,11 +29,13 @@ def search():
                 link = random.choice(["www.google.com", "www.onet.pl", "www.facebook.com", "www.wp.pl"])
                 delivery_cost = random.randint(10, 20)
                 sum_of_costs = sum_of_costs + price*quantity + delivery_cost
-                tmp.append(name)
-                tmp.append(quantity)
-                tmp.append(price)
-                tmp.append(delivery_cost)
-                tmp.append(link)
-                result.append(tmp)
-            result.append(sum_of_costs)
-        return result
+                output_data['products'].append({
+                    'name': name,
+                    'quantity': quantity,
+                    'price': price,
+                    'delivery': delivery_cost,
+                    'link': link
+                })
+            output_data['costs'] = sum_of_costs
+        with open('output_data.txt', 'w') as file:
+            json.dump(output_data, file)

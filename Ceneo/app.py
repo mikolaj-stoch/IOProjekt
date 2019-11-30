@@ -13,10 +13,10 @@ def home():
 @app.route("/search", methods=["POST", "GET"])
 def search():
     if request.method == "POST":
-        data = {'input': []}
+        data = {'products': []}
         for i in range(5):
             if request.form[f'productName{i}']:
-                data['input'].append({
+                data['products'].append({
                     'name': request.form[f'productName{i}'],
                     'quantity': request.form[f'quantity{i}'],
                     'minimum_price': request.form[f'minPrice{i}'],
@@ -25,7 +25,9 @@ def search():
                 })
         with open('input_data.txt', 'w') as file:
             json.dump(data, file)
-        output_data = temporary.search()  # TEMPORARY FUNCTION ! ! !
+        temporary.search()  # TEMPORARY FUNCTION ! ! !
+        with open('output_data.txt') as json_file:
+            output_data = json.load(json_file)
         return render_template("results.html", context=output_data)
     else:
         return render_template("search.html")
