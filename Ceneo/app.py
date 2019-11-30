@@ -26,7 +26,7 @@ def search():
         with open('input_data.txt', 'w') as file:
             json.dump(data, file)
         output_data = temporary.search()  # TEMPORARY FUNCTION ! ! !
-        return render_template("output.html", context=output_data)
+        return render_template("results.html", context=output_data)
     else:
         return render_template("search.html")
 
