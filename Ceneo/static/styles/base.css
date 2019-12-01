@@ -17,3 +17,10 @@
     width: 100%;
 }
 
+.nav-paragraph {
+    color: white;
+}
+
+.nav-paragraph:hover {
+    color: silver;
+}

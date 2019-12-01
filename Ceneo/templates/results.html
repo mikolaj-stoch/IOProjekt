@@ -2,16 +2,17 @@
 {% block content %}
 
 <div>
-	<section class="jumbotron text-center">
+	<section class="jumbotron text-center mb-0">
 		<h1 class="jumbotron-heading">Search results</h1>
 	</section>
+    <hr class="mb-5">
 </div>
 
 <div class="container">
 
     <div class="row mb-0 text-center">
         <div class="col-10">
-            <div class="row mb-1">
+            <div class="row mb-2">
                 <div class="col-4"><p class="lead text-muted mb-0">Product</p></div>
                 <div class="col"><p class="lead text-muted  mb-0">Quantity</p></div>
                 <div class="col"><p class="lead text-muted  mb-0">Price per unit</p></div>
@@ -20,12 +21,10 @@
             </div>
         </div>
         <div class="col">
-            <p class="lead text-muted  mb-0">Sum of costs</p>
+            <p class="lead text-muted mb-0">Sum of costs</p>
         </div>
     </div>
-
-    <hr class="mb-4">
-
+    <hr class="mb-3 mt-0">
     <div class="row mb-1 text-center">
         <div class="col-10">
             {% for product in context['products'] %}

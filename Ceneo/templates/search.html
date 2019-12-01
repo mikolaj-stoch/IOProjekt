@@ -1,23 +1,31 @@
 {% extends "base.html" %}
 
+{% block link %}
+	<link rel="stylesheet" href="{{ url_for('static', filename="styles/alert.css") }}" type="text/css">
+{% endblock %}
+
+
 {% block content %}
 <div>
-	<section class="jumbotron text-center">
+	<section class="jumbotron text-center mb-0">
 		<h1 class="jumbotron-heading">Search for products</h1>
 	</section>
+	<hr class="mb-5">
 </div>
 
 <div class="container">
-
-	<hr class="mb-3">
-	<div class="row mb-2">
-		<div class="col-5"><p class="lead text-muted">Name of the product</p></div>
-		<div class="col"><p class="lead text-muted">Quantity</p></div>
-		<div class="col"><p class="lead text-muted">Min price [zł]</p></div>
-		<div class="col"><p class="lead text-muted">Max price [zł]</p></div>
-		<div class="col"><p class="lead text-muted">Min reputation</p></div>
+	<div class="alert" id="alert">
+  		<span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+		<p id="message"></p>
 	</div>
-
+	<div class="row mb-2">
+		<div class="col-5"><p class="lead text-muted mb-0">Name of the product</p></div>
+		<div class="col"><p class="lead text-muted mb-0">Quantity</p></div>
+		<div class="col"><p class="lead text-muted mb-0">Min price [zł]</p></div>
+		<div class="col"><p class="lead text-muted mb-0">Max price [zł]</p></div>
+		<div class="col"><p class="lead text-muted mb-0">Min reputation</p></div>
+	</div>
+	<hr class="mb-3 mt-0">
 	<form name="inputForm" action="#" method="post" onsubmit="return validateForm()">
 		{% for i in range(5) %}
 			<div class="row mb-3">

@@ -11,25 +11,32 @@ function validateForm(){
         }
 
         if (!productName && quantity > 0){
-            window.alert("Enter the name of product no " + (i+1) + " or set quantity to 0.");
+            displayAlert("Enter the name of product no " + (i+1) + " or set quantity to 0.");
             return false;
         }
 
         if (productName && !quantity){
-            window.alert("Enter the quantity of product no " + (i+1) + ".");
+            displayAlert("Enter the quantity of product no " + (i+1) + ".");
             return false;
         }
 
         if ((minPrice > maxPrice) && maxPrice){
-            window.alert("Minimum price of product no " + (i+1) + " is higher than maximum.");
+            displayAlert("Minimum price of product no " + (i+1) + " is higher than maximum.");
             return false;
         }
     }
 
     if(emptyFields == 5){
-        window.alert("Enter at least one product.");
+        displayAlert("Enter at least one product.");
         return false;
     }
 
     return true;
+}
+
+function displayAlert(msg){
+    var alertBox = document.getElementById("alert");
+    var message = document.getElementById("message");
+    alertBox.style.display = 'block';
+    message.innerHTML = msg;
 }
