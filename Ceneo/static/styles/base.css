@@ -1,3 +1,25 @@
+html, body {
+   margin:0;
+   padding:0;
+   height:100%;
+}
+
+#page-container {
+  position: relative;
+  min-height: 100%;
+}
+
+#content {
+  padding-bottom: 50px;
+}
+
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+}
+
 .logo {
 	width: 70%;
 	height: 70%;
@@ -12,15 +34,10 @@
     width: 300px;
 }
 
-.footer {
-    bottom: 0;
-    width: 100%;
-}
-
-.nav-paragraph {
+.nav-element {
     color: white;
 }
 
-.nav-paragraph:hover {
+.nav-element:hover {
     color: silver;
 }
