@@ -1,5 +1,4 @@
 from flask import Flask, render_template, request
-import temporary
 import json
 
 app = Flask(__name__)
@@ -25,7 +24,7 @@ def search():
                 })
         with open('input_data.txt', 'w') as file:
             json.dump(data, file)
-        temporary.search()  # TEMPORARY FUNCTION ! ! !
+        ## search function
         with open('output_data.txt') as json_file:
             output_data = json.load(json_file)
         return render_template("results.html", context=output_data)

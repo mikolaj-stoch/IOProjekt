@@ -9,56 +9,59 @@
 </div>
 
 <div class="container">
-
-    <div class="row mb-0 text-center">
-        <div class="col-10">
-            <div class="row mb-2">
-                <div class="col-4 text-left"><p class="lead text-muted mb-0">Product</p></div>
-                <div class="col"><p class="lead text-muted  mb-0">Quantity</p></div>
-                <div class="col"><p class="lead text-muted  mb-0">Price per unit</p></div>
-                <div class="col"><p class="lead text-muted  mb-0">Delivery cost</p></div>
-                <div class="col"><p class="lead text-muted  mb-0">Link</p></div>
+    {% for set in context['sets'] %}
+        <div class="text-center mb-3">
+            <h2>Option {{loop.index}}</h2>
+        </div>
+        <div class="row mb-0 text-center">
+            <div class="col-10">
+                <div class="row mb-2">
+                    <div class="col-4 text-left"><p class="lead text-muted mb-0">Product</p></div>
+                    <div class="col"><p class="lead text-muted  mb-0">Quantity</p></div>
+                    <div class="col"><p class="lead text-muted  mb-0">Price per unit</p></div>
+                    <div class="col"><p class="lead text-muted  mb-0">Delivery cost</p></div>
+                    <div class="col"><p class="lead text-muted  mb-0">Link</p></div>
+                </div>
+            </div>
+            <div class="col">
+                <p class="lead text-muted mb-0">Sum of costs</p>
             </div>
         </div>
-        <div class="col">
-            <p class="lead text-muted mb-0">Sum of costs</p>
+        <hr class="mb-3 mt-0">
+        <div class="row mb-1 text-center mb-0">
+            <div class="col-10">
+                {% for product in set['products'] %}
+                    {% if product['name'] %}
+                        <div class="row mb-3">
+                            <div class="col-4 text-left">
+                                <p class="lead text-muted">{{product['name']}}</p>
+                            </div>
+                            <div class="col">
+                                <p class="lead text-muted">{{product['quantity']}}</p>
+                            </div>
+                            <div class="col">
+                                <p class="lead text-muted">{{product['price']}} zł</p>
+                            </div>
+                            <div class="col">
+                                <p class="lead text-muted">{{product['delivery']}} zł</p>
+                            </div>
+                            <div class="col">
+                                <a class="btn btn-warning" href="http://{{product['link']}}" target="_blank">Link</a>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+            <div class="col">
+                <p class="lead text-muted">{{ set['costs'] }} zł</p>
+            </div>
         </div>
-    </div>
-    <hr class="mb-3 mt-0">
-    <div class="row mb-1 text-center">
-        <div class="col-10">
-            {% for product in context['products'] %}
-                {% if product['name'] %}
-                    <div class="row mb-3">
-                        <div class="col-4 text-left">
-                            <p class="lead text-muted">{{product['name']}}</p>
-                        </div>
-                        <div class="col">
-                            <p class="lead text-muted">{{product['quantity']}}</p>
-                        </div>
-                        <div class="col">
-                            <p class="lead text-muted">{{product['price']}} zł</p>
-                        </div>
-                        <div class="col">
-                            <p class="lead text-muted">{{product['delivery']}} zł</p>
-                        </div>
-                        <div class="col">
-                            <a class="btn btn-warning" href="http://{{product['link']}}" target="_blank">Link</a>
-                        </div>
-                    </div>
-                {% endif %}
-            {% endfor %}
-        </div>
-        <div class="col">
-            <p class="lead text-muted">{{ context['costs'] }} zł</p>
-        </div>
-    </div>
+        <hr class="mb-5 mt-0">
+    {% endfor %}
 
-    <hr class="mb-4">
-
-    <div class="text-center">
+    <div class="text-center mb-5">
         <a href="">
-            <button class="big-btn btn-warning btn-lg" type="submit">Search again</button>
+            <button class="big-btn btn-warning btn-lg">Search again</button>
         </a>
     </div>
 
