@@ -1,6 +1,7 @@
 {% extends "base.html" %}
-{% block content %}
 
+{% block content %}
+<!-- Heading -->
 <div>
 	<section class="jumbotron text-center mb-0">
 		<h1 class="jumbotron-heading">Search results</h1>
@@ -8,6 +9,7 @@
     <hr class="mb-5">
 </div>
 
+<!-- Displaying results  -->
 <div class="container">
     {% for set in context['sets'] %}
         <div class="text-center mb-3">
@@ -31,39 +33,35 @@
         <div class="row mb-1 text-center mb-0">
             <div class="col-10">
                 {% for product in set['products'] %}
-                    {% if product['name'] %}
-                        <div class="row mb-3">
-                            <div class="col-4 text-left">
-                                <p class="lead text-muted">{{product['name']}}</p>
-                            </div>
-                            <div class="col">
-                                <p class="lead text-muted">{{product['quantity']}}</p>
-                            </div>
-                            <div class="col">
-                                <p class="lead text-muted">{{product['price']}} zł</p>
-                            </div>
-                            <div class="col">
-                                <p class="lead text-muted">{{product['delivery']}} zł</p>
-                            </div>
-                            <div class="col">
-                                <a class="btn btn-warning" href="http://{{product['link']}}" target="_blank">Link</a>
-                            </div>
+                    <div class="row mb-3">
+                        <div class="col-4 text-left">
+                            <p class="lead text-muted">{{product['name']}}</p>
                         </div>
-                    {% endif %}
+                        <div class="col">
+                            <p class="lead text-muted">{{product['quantity']}}</p>
+                        </div>
+                        <div class="col">
+                            <p class="lead text-muted">{{product['price']}} zł</p>
+                        </div>
+                        <div class="col">
+                            <p class="lead text-muted">{{product['delivery']}} zł</p>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-warning" href="http://{{product['link']}}" target="_blank">Link</a>
+                        </div>
+                    </div>
                 {% endfor %}
             </div>
             <div class="col">
-                <p class="lead text-muted">{{ set['costs'] }} zł</p>
+                <p class="lead text-muted">{{set['costs']}} zł</p>
             </div>
         </div>
         <hr class="mb-5 mt-0">
     {% endfor %}
-
     <div class="text-center mb-5">
         <a href="">
             <button class="big-btn btn-warning btn-lg">Search again</button>
         </a>
     </div>
-
 </div>
 {% endblock %}
