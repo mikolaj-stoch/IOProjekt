@@ -12,7 +12,7 @@ class SearchPageSpiderSpider(scrapy.Spider):
     path = '../../tmp'
     with open(os.path.join(path, "input_data.txt")) as json_file:
         data = json.load(json_file)
-        for info in data['input']:
+        for info in data['products']:
             name_of_product = info['name']
             min_price = info['minimum_price']
             max_price = info['maximum_price']

@@ -22,10 +22,10 @@ def search():
                     'maximum_price': request.form[f'maxPrice{i}'],
                     'reputation': request.form[f'reputation{i}']
                 })
-        with open('input_data.txt', 'w') as file:
+        with open('./tmp/input_data.txt', 'w') as file:
             json.dump(data, file)                   # Save input data to json file
         ## search function
-        with open('output_data.txt') as json_file:
+        with open('./tmp/output_data.txt') as json_file:
             output_data = json.load(json_file)      # Load output data from json file
         return render_template("results.html", context=output_data)
     else:

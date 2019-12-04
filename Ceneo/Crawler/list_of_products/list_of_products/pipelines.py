@@ -19,7 +19,7 @@ class ListOfProductsPipeline(object):
         path = '../../tmp'
         with open(os.path.join(path, "input_data.txt")) as json_file:
             data = json.load(json_file)
-            for info in data['input']:
+            for info in data['products']:
                 name = info['name']
         name_database = name + ".db"
         path = r'..\..\tmp\\' + name_database;

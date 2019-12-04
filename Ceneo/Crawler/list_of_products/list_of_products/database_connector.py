@@ -30,7 +30,7 @@ def check():
     path = '../../tmp'
     with open(os.path.join(path, "input_data.txt")) as json_file:
         data = json.load(json_file)
-        for info in data['input']:
+        for info in data['products']:
             reputation = info['reputation']
             name = info['name']
     name_database = name + ".db"
