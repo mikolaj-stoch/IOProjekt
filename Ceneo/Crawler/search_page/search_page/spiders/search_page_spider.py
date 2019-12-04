@@ -3,11 +3,14 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 from search_page.items import SearchPageItem
 import json
+import os
 
 
 class SearchPageSpiderSpider(scrapy.Spider):
     name = 'search_page_spider'
-    with open ('input_data.txt') as json_file:
+
+    path = '../../tmp'
+    with open(os.path.join(path, "input_data.txt")) as json_file:
         data = json.load(json_file)
         for info in data['input']:
             name_of_product = info['name']

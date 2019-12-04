@@ -1,5 +1,7 @@
 input_data.txt
 
+Ceneo/tmp/*
+
 # Editors
 .vscode/
 .idea/

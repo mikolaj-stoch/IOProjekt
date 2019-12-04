@@ -12,7 +12,7 @@ def connect_old_database():
 number_of_used_links = 0
 
 def get_row():
-    conn = sqlite3.connect('products_from_search_page.db')
+    conn = sqlite3.connect(r'..\..\tmp\products_from_search_page.db')
     curr = conn.cursor()
     curr.execute("""SELECT count(*) FROM products order by number_of_shops DESC, price;""",())
     number_of_rows = curr.fetchone()
@@ -32,7 +32,8 @@ def check():
             reputation = info['reputation']
             name = info['name']
     name_database = name + ".db"
-    conn = sqlite3.connect(name_database)
+    path = r'..\..\tmp\\' + name_database
+    conn = sqlite3.connect(path)
     curr = conn.cursor()
     curr.execute("""SELECT count(*) FROM products where shop_rating > ? and shop_reviews_number > 20;""", (
         [reputation]
