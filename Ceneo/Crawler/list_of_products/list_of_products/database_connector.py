@@ -1,6 +1,7 @@
 import sqlite3
 import sys
 import json
+import os
 '''
 def connect_old_database():
     conn = sqlite3.connect('products_from_search_page.db')
@@ -26,7 +27,8 @@ def get_row():
     return str
 
 def check():
-    with open ('input_data.txt') as json_file:
+    path = '../../tmp'
+    with open(os.path.join(path, "input_data.txt")) as json_file:
         data = json.load(json_file)
         for info in data['input']:
             reputation = info['reputation']
