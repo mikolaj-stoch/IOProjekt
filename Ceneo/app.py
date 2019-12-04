@@ -1,5 +1,8 @@
 from flask import Flask, render_template, request
 import json
+import tmp_dir_manager
+import tmp      # TEMPORARY
+
 
 app = Flask(__name__)
 
@@ -22,11 +25,13 @@ def search():
                     'maximum_price': request.form[f'maxPrice{i}'],
                     'reputation': request.form[f'reputation{i}']
                 })
+        tmp_dir_manager.create('./tmp')             # Create tmp directory
         with open('./tmp/input_data.txt', 'w') as file:
             json.dump(data, file)                   # Save input data to json file
-        ## search function
+        tmp.search()    # TEMPORARY
         with open('./tmp/output_data.txt') as json_file:
             output_data = json.load(json_file)      # Load output data from json file
+        tmp_dir_manager.delete('./tmp')             # Delete tmp directory
         return render_template("results.html", context=output_data)
     else:
         return render_template("search.html")
