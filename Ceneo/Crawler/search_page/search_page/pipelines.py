@@ -6,14 +6,17 @@
 # See: https://docs.scrapy.org/en/latest/topics/item-pipeline.html
 import sqlite3
 # Przechwytujemy dane ze strumienia i zapisujemy do bazy danych. Komendy z sq3lite.
-class SearchPagePipeline(object):
 
-    def __init__(self):
+class SearchPagePipeline(object):
+    def __init__(self,product_number):
+        self.product_number = product_number
         self.create_connection()
         self.create_table()
 
+
     def create_connection(self):
-        self.conn = sqlite3.connect("products_from_search_page.db")
+        path = r'..\..\tmp\products_from_search_page_' + self.product_number + '.db'
+        self.conn = sqlite3.connect(path)
         self.curr = self.conn.cursor()
 
     def create_table(self):
@@ -37,3 +40,9 @@ class SearchPagePipeline(object):
             item['number_of_shops'][0]
         ))
         self.conn.commit()
+
+    @classmethod
+    def from_crawler(cls, crawler):
+        settings = crawler.settings
+        product_number = settings.get('product_number')
+        return cls(product_number)

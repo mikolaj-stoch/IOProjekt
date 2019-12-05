@@ -5,7 +5,7 @@ function validateForm(){
         var quantity = parseInt(document.forms["inputForm"]["quantity" + i].value);
         var minPrice = parseInt(document.forms["inputForm"]["minPrice" + i].value);
         var maxPrice = parseInt(document.forms["inputForm"]["maxPrice" + i].value);
-        var reputation = parseInt(document.forms["inputForm"]["reputation" + i].value);
+        var reputation = parseFloat(document.forms["inputForm"]["reputation" + i].value);
 
         if (!productName){
             emptyFields++;

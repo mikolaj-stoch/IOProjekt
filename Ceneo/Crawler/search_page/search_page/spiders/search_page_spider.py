@@ -3,32 +3,33 @@ import scrapy
 from scrapy.crawler import CrawlerProcess
 from search_page.items import SearchPageItem
 import json
+import os
 
 
 class SearchPageSpiderSpider(scrapy.Spider):
     name = 'search_page_spider'
-    with open ('input_data.txt') as json_file:
-        data = json.load(json_file)
-        for info in data['input']:
+
+    def __init__(self, product_number='', **kwargs):
+        super().__init__(**kwargs)
+        self.product_number = int(product_number)
+        path = '../../tmp'
+        with open(os.path.join(path, "input_data.txt")) as json_file:
+            data = json.load(json_file)
+            info = data['products'][self.product_number]
             name_of_product = info['name']
             min_price = info['minimum_price']
             max_price = info['maximum_price']
-    # print("Podaj nazwe produktu")
-    # name_of_product = input()
-    # print("Podaj widelki")
-    # min_price = input()
-    # max_price = input()
 
-    name_of_product = name_of_product.replace(" ", "+")
-    if min_price == '':
-        min_price = 0
-    if max_price == '':
-        price_range = ";m" + str(min_price) + ";n"
-    else:
-        price_range = ";m" + str(min_price) + ";n"+ str(max_price)
+        name_of_product = name_of_product.replace(" ", "+")
+        if min_price == '':
+            min_price = 0
+        if max_price == '':
+            price_range = ";m" + str(min_price) + ";n"
+        else:
+            price_range = ";m" + str(min_price) + ";n" + str(max_price)
 
-    url = 'https://www.ceneo.pl/;szukaj-' + name_of_product + price_range + ';0112-0.htm'
-    start_urls = [url]
+        url = 'https://www.ceneo.pl/;szukaj-' + name_of_product + price_range + ';0112-0.htm'
+        self.start_urls = [url]
 
     def parse(self, response):
         items = SearchPageItem()

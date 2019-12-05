@@ -10,10 +10,13 @@ from list_of_products.database_connector import add_next_link
 class ListOfProductsSpiderSpider(scrapy.Spider):
 
     name = 'list_of_products_spider'
-    product_id = get_row()
-    # reputation = 3
-    url = 'http://ceneo.pl' + product_id # Link
-    start_urls = [url] # Link
+
+    def __init__(self, product_number='', **kwargs):
+        super().__init__(**kwargs)
+        self.product_number = int(product_number)
+        self.product_id = get_row(str(self.product_number))
+        url = 'http://ceneo.pl' + self.product_id # Link
+        self.start_urls = [url] # Link
 
     def parse(self, response):
         if self.product_id != '':
@@ -69,10 +72,9 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
                 items['number_of_reviews'] = int(number_of_reviews[x])
                 yield items # Yield do takie return
 
-            if check() < 5:
+            if check(self.product_number) < 5:
                 add_next_link()
-                print(get_row())
-                url_new = 'http://ceneo.pl' + get_row()
+                url_new = 'http://ceneo.pl' + get_row(str(self.product_number))
                 yield response.follow(url_new, callback=self.parse)
 
         else:
