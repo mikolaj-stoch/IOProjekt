@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request
 import json
+<<<<<<< HEAD
 import os
 import sqlite3
 import itertools
@@ -7,6 +8,10 @@ import sys
 import optimalizer
 import time
 import tmp_dir_manager
+=======
+import tmp_dir_manager
+import tmp      # TEMPORARY
+>>>>>>> master
 
 
 app = Flask(__name__)
@@ -33,6 +38,7 @@ def search():
         tmp_dir_manager.create('./tmp')             # Create tmp directory
         with open('./tmp/input_data.txt', 'w') as file:
             json.dump(data, file)                   # Save input data to json file
+<<<<<<< HEAD
         
         os.system(".\\Crawler\\ONE_BAT_TO_RULE_THEM_ALL.bat")
         time.sleep(12)
@@ -41,6 +47,12 @@ def search():
         with open('./tmp/output_data.txt') as json_file:
             output_data = json.load(json_file)      # Load output data from json file
         tmp_dir_manager.delete('./tmp')             # Delete tmp directory
+=======
+        tmp.search()    # TEMPORARY
+        with open('./tmp/output_data.txt') as json_file:
+            output_data = json.load(json_file)      # Load output data from json file
+        # tmp_dir_manager.delete('./tmp')             # Delete tmp directory
+>>>>>>> master
         return render_template("results.html", context=output_data)
     else:
         return render_template("search.html")
