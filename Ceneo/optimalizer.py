@@ -4,6 +4,7 @@ import sys
 import json
 import os
 
+
 class Product:
     delivery_price = float('NaN')
 
@@ -38,14 +39,14 @@ def database_to_object(path):
                                 AND delivery_info NOT LIKE 'szczegóły dostawy' 
                             ORDER BY price;     """
     for row in con.execute(sql_request):
-    	obj_list.append(Product(row))
+        obj_list.append(Product(row))
     return obj_list
 
 
 def list_of_products(database_name, prefix=""):
     product_list = []
     for i in database_name:
-    	product_list.append(database_to_object(prefix + i))
+        product_list.append(database_to_object(prefix + i))
     return product_list
 
 
@@ -70,53 +71,55 @@ def find_optimal(product_list):
     final_list = sorted(final_list, key=lambda row: row[1])
     return final_list
 
+
 def read_db_names():
-	input_db = []
-	for i in os.listdir("tmp"):
-		if i[-3:] == ".db" and "products_from_search_page" not in i:
-			input_db.append(i)
-	return input_db
+    input_db = []
+    for i in os.listdir("tmp"):
+        if i[-3:] == ".db" and "products_from_search_page" not in i:
+            input_db.append(i)
+    return input_db
+
 
 def result_to_dict(final_list):
-	total_list=[]
-	for i in range(3):
-		tmp_external_dict = {}
-		tmp_list = []
-		for j in final_list[i][0]:
-			tmp_dictionary = {}
-			tmp_dictionary["name"] = j.object_name
-			tmp_dictionary["price"] = j.price
-			tmp_dictionary["delivery"] = j.delivery_price
-			tmp_dictionary["link"] = j.website_link
-			tmp_dictionary["store"] = j.shop_name
-			tmp_dictionary["quantity"] = 1
-			tmp_list.append(tmp_dictionary)
-		tmp_external_dict["products"] = tmp_list
-		tmp_external_dict["costs"] = final_list[i][1]
-		total_list.append(tmp_external_dict)
-	output_data = {}
-	output_data["sets"] = total_list
-	return output_data
+    total_list = []
+    for i in range(3):
+        tmp_external_dict = {}
+        tmp_list = []
+        for j in final_list[i][0]:
+            tmp_dictionary = {}
+            tmp_dictionary["name"] = j.object_name
+            tmp_dictionary["price"] = j.price
+            tmp_dictionary["delivery"] = j.delivery_price
+            tmp_dictionary["link"] = j.website_link
+            tmp_dictionary["store"] = j.shop_name
+            tmp_dictionary["quantity"] = 1
+            tmp_list.append(tmp_dictionary)
+        tmp_external_dict["products"] = tmp_list
+        tmp_external_dict["costs"] = final_list[i][1]
+        total_list.append(tmp_external_dict)
+    output_data = {}
+    output_data["sets"] = total_list
+    return output_data
+
 
 def save_output(output_data, path_to_output):
-	out = open(path_to_output,"w+")
-	out.write(str(output_data).replace("'", '"'))
-	out.close()
+    out = open(path_to_output,"w+")
+    out.write(str(output_data).replace("'", '"'))
+    out.close()
+
 
 def main():
-	input_db = read_db_names()
-	product_list = list_of_products(input_db, 'tmp\\')
-	final_list = find_optimal(product_list)
+    input_db = read_db_names()
+    product_list = list_of_products(input_db, 'tmp\\')
+    final_list = find_optimal(product_list)
 
+    # for o in final_list[0][0]:
+    # 	print(o.shop_name, o.delivery_price, o.object_name)
+    # print("\n\n")
 
-	# for o in final_list[0][0]:
-	# 	print(o.shop_name, o.delivery_price, o.object_name)
-	# print("\n\n")
-
-	
-	output_data = result_to_dict(final_list)
-	save_output(output_data, "tmp\\output_data.txt")
+    output_data = result_to_dict(final_list)
+    save_output(output_data, "tmp\\output_data.txt")
 
 
 if __name__ == '__main__':
-	main()
+    main()
