@@ -88,6 +88,7 @@ def result_to_dict(final_list):
 			tmp_dictionary["price"] = j.price
 			tmp_dictionary["delivery"] = j.delivery_price
 			tmp_dictionary["link"] = j.website_link
+			tmp_dictionary["store"] = j.shop_name
 			tmp_dictionary["quantity"] = 1
 			tmp_list.append(tmp_dictionary)
 		tmp_external_dict["products"] = tmp_list

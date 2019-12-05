@@ -16,26 +16,27 @@
             <h2>Option {{loop.index}}</h2>
         </div>
         <div class="row mb-0 text-center">
-            <div class="col-10">
+            <div class="col-12">
                 <div class="row mb-2">
                     <div class="col-4 text-left"><p class="lead text-muted mb-0">Product</p></div>
+                    <div class="col-3 text-left"><p class="lead text-muted mb-0">Store</p></div>
                     <div class="col"><p class="lead text-muted  mb-0">Quantity</p></div>
                     <div class="col"><p class="lead text-muted  mb-0">Price per unit</p></div>
                     <div class="col"><p class="lead text-muted  mb-0">Delivery cost</p></div>
                     <div class="col"><p class="lead text-muted  mb-0">Link</p></div>
                 </div>
             </div>
-            <div class="col">
-                <p class="lead text-muted mb-0">Sum of costs</p>
-            </div>
         </div>
         <hr class="mb-3 mt-0">
-        <div class="row mb-1 text-center mb-0">
-            <div class="col-10">
+        <div class="row mb-0 text-center mb-0">
+            <div class="col">
                 {% for product in set['products'] %}
                     <div class="row mb-3">
                         <div class="col-4 text-left">
                             <p class="lead text-muted">{{product['name']}}</p>
+                        </div>
+                        <div class="col-3 text-left">
+                            <p class="lead text-muted">{{product['store']}}</p>
                         </div>
                         <div class="col">
                             <p class="lead text-muted">{{product['quantity']}}</p>
@@ -52,8 +53,11 @@
                     </div>
                 {% endfor %}
             </div>
-            <div class="col">
-                <p class="lead text-muted">{{set['costs']}} zł</p>
+        </div>
+        <div class="row mb-5">
+            <div class="col text-center">
+                <hr class="mb-1 mt-0">
+                <p class="lead text-muted">Sum of costs: {{set['costs']}} zł</p>
             </div>
         </div>
         <hr class="mb-5 mt-0">
