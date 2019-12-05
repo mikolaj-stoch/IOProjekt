@@ -8,6 +8,7 @@ from Ceneo.Crawler.list_of_products_SCRIPT.list_of_products.database_connector i
 from Ceneo.Crawler.list_of_products_SCRIPT.list_of_products.database_connector import check
 from Ceneo.Crawler.list_of_products_SCRIPT.list_of_products.database_connector import add_next_link
 
+import sys
 
 class ListOfProductsSpiderSpider(scrapy.Spider):
 
@@ -67,7 +68,7 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
             for x in range(len(price_one_product)):
                 items['name_of_object'] = name_of_object[x]
                 items['price_one_product'] = float(price_one_product[x]) + float(penny[x][1:]) * 0.01
-                items['website_link'] = website_link[x]
+                items['website_link'] = 'http://ceneo.pl' + website_link[x]
                 items['shop_name'] = shop_name[x]
                 items['delivery_info'] = final_delivery_information[x]
                 items['shop_rating'] = shop_rating[x]
@@ -83,7 +84,7 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
             print("Na stronie nie ma wystaczajacej liczby informacji.")
 
 
-def run_list_of_product_spider(product_number):
+def main(product_number):
     s = get_project_settings()
     s['product_number'] = product_number
     process = CrawlerProcess(s)
@@ -91,4 +92,4 @@ def run_list_of_product_spider(product_number):
     process.start()
 
 if __name__ == "__main__":
-    run_list_of_product_spider(4)
+    main(int(sys.argv[1]))

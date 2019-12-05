@@ -5,6 +5,7 @@ from Ceneo.Crawler.search_page_SCRIPT.search_page.items import SearchPageItem
 import json
 import os
 from scrapy.utils.project import get_project_settings
+import sys
 
 class SearchPageSpiderSpider(scrapy.Spider):
     name = 'search_page_spider'
@@ -70,7 +71,7 @@ def run_search_page_spider(product_number):
 
 
 if __name__ == "__main__":
-    run_search_page_spider(4)
+    run_search_page_spider(int(sys.argv[1]))
 
 
 
