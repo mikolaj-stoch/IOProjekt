@@ -2,14 +2,7 @@ import sqlite3
 import sys
 import json
 import os
-'''
-def connect_old_database():
-    conn = sqlite3.connect('products_from_search_page.db')
-    curr = conn.cursor()
-    curr.execute("""SELECT website_link FROM products order by price , number_of_shops DESC;""", (
-    ))
-    return curr.fetchone()[0]
-'''
+
 number_of_used_links = 0
 def get_row(product_number):
     path = r'..\..\tmp\products_from_search_page_' + product_number + '.db'

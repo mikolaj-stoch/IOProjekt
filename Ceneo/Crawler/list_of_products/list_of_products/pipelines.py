@@ -22,6 +22,7 @@ class ListOfProductsPipeline(object):
             data = json.load(json_file)
             info = data['products'][int(self.product_number)]
             name = info['name']
+            self.quantity = info['quantity']
         name_database = name + ".db"
         path = r'..\..\tmp\\' + name_database
         self.conn = sqlite3.connect(path)
@@ -36,7 +37,8 @@ class ListOfProductsPipeline(object):
                              website_link text,
                              shop_name text,
                              shop_rating int,
-                             shop_reviews_number int
+                             shop_reviews_number int,
+                             quantity int
                              )""")
 
     def process_item(self, item, spider):
@@ -44,14 +46,15 @@ class ListOfProductsPipeline(object):
         return item
 
     def store_db(self,item):
-        self.curr.execute(""" insert into products values (?,?,?,?,?,?,?)""",(
+        self.curr.execute(""" insert into products values (?,?,?,?,?,?,?,?)""",(
             item['name_of_object'],
             item['price_one_product'],
             item['delivery_info'],
             item['website_link'],
             item['shop_name'],
             item['shop_rating'],
-            item['number_of_reviews']
+            item['number_of_reviews'],
+            self.quantity
         ))
         self.conn.commit()
 
