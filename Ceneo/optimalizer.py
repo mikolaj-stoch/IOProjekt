@@ -15,6 +15,7 @@ class Product:
         self.shop_name = row[4]
         self.shop_rating = row[5]
         self.shop_reviews_number = row[6]
+        self.quantity = row[7]
         self.calculate_delivery_price()                
         self.object_name = self.object_name.replace('"', ' cali')
         self.object_name = self.object_name.replace("'", ' cali')
@@ -69,7 +70,7 @@ def find_optimal(product_list):
                 del_pri[i.shop_name] = i.delivery_price
             elif del_pri[i.shop_name] < i.delivery_price:
                 del_pri[i.shop_name] = i.delivery_price
-            final_price += i.price
+            final_price += i.price * i.quantity
         final_price += sum(del_pri.values())
         final_list.append([product, round(final_price, 2)])
 
@@ -100,7 +101,7 @@ def result_to_dict(final_list):
             tmp_dictionary["price"] = j.price
             tmp_dictionary["link"] = j.website_link
             tmp_dictionary["store"] = j.shop_name
-            tmp_dictionary["quantity"] = 1
+            tmp_dictionary["quantity"] = j.quantity
             tmp_list.append(tmp_dictionary)
         tmp_external_dict["products"] = tmp_list
         tmp_external_dict["costs"] = final_list[i][1]
