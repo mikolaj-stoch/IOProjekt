@@ -48,7 +48,9 @@ def database_to_object(path):
 def list_of_products(database_name, prefix=""):
     product_list = []
     for i in database_name:
-    	product_list.append(database_to_object(prefix + i))
+        dto = database_to_object(prefix + i)
+        if len(dto) >= 3:
+            product_list.append(dto)
     return product_list
 
 
@@ -111,9 +113,8 @@ def result_to_dict(final_list):
     return output_data
 
 def save_output(output_data, path_to_output):
-	out = open(path_to_output,"w+")
-	out.write(str(output_data).replace("'", '"'))
-	out.close()
+    with open(path_to_output, "w+") as json_file:
+        json.dump(output_data, json_file)
 
 def main():
 	input_db = read_db_names()

@@ -42,7 +42,7 @@ def search():
 
         with open('./tmp/output_data.txt') as json_file:
             output_data = json.load(json_file)      # Load output data from json file
-        # tmp_dir_manager.delete('./tmp')             # Delete tmp directory
+        tmp_dir_manager.delete('./tmp')             # Delete tmp directory
         return render_template("results.html", context=output_data)
     else:
         return render_template("search.html")
