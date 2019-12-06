@@ -1,3 +1,4 @@
+color 04
 cd Crawler\search_page
 scrapy crawl search_page_spider -a product_number=3 -s product_number=3
 cd ..

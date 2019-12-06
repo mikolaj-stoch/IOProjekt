@@ -15,7 +15,9 @@ class Product:
         self.shop_name = row[4]
         self.shop_rating = row[5]
         self.shop_reviews_number = row[6]
-        self.calculate_delivery_price()
+        self.calculate_delivery_price()                
+        self.object_name = self.object_name.replace('"', ' cali')
+        self.object_name = self.object_name.replace("'", ' cali')
 
     def calculate_delivery_price(self):
         if "Darmowa" in self.delivery_info:
@@ -52,18 +54,22 @@ def list_of_products(database_name, prefix=""):
 def find_optimal(product_list):
     possibility = []
     for sequence in itertools.product(*product_list):
-        possibility.append(sequence)
+        try:
+            possibility.append(sequence)
+        except MemoryError as error:
+             print(str(error))
+             pass
 
     final_list = []
     for product in possibility:
         del_pri = {}
         final_price = 0
-        for i in range(len(product)):
-            if product[i].shop_name not in del_pri:
-                del_pri[product[i].shop_name] = product[i].delivery_price
-            elif del_pri[product[i].shop_name] < product[i].delivery_price:
-                del_pri[product[i].shop_name] = product[i].delivery_price
-            final_price += product[i].price
+        for i in product:
+            if i.shop_name not in del_pri:
+                del_pri[i.shop_name] = i.delivery_price
+            elif del_pri[i.shop_name] < i.delivery_price:
+                del_pri[i.shop_name] = i.delivery_price
+            final_price += i.price
         final_price += sum(del_pri.values())
         final_list.append([product, round(final_price, 2)])
 
@@ -78,25 +84,30 @@ def read_db_names():
 	return input_db
 
 def result_to_dict(final_list):
-	total_list=[]
-	for i in range(3):
-		tmp_external_dict = {}
-		tmp_list = []
-		for j in final_list[i][0]:
-			tmp_dictionary = {}
-			tmp_dictionary["name"] = j.object_name
-			tmp_dictionary["price"] = j.price
-			tmp_dictionary["delivery"] = j.delivery_price
-			tmp_dictionary["link"] = j.website_link
-			tmp_dictionary["store"] = j.shop_name
-			tmp_dictionary["quantity"] = 1
-			tmp_list.append(tmp_dictionary)
-		tmp_external_dict["products"] = tmp_list
-		tmp_external_dict["costs"] = final_list[i][1]
-		total_list.append(tmp_external_dict)
-	output_data = {}
-	output_data["sets"] = total_list
-	return output_data
+    total_list=[]
+    for i in range(min(3,len(final_list))):
+        tmp_external_dict = {}
+        tmp_list = []
+        save_shop = []
+        for j in final_list[i][0]:
+            tmp_dictionary = {}
+            if j.shop_name in save_shop:
+                tmp_dictionary["delivery"] = 0
+            else: 
+                tmp_dictionary["delivery"] = j.delivery_price
+            save_shop.append(j.shop_name)
+            tmp_dictionary["name"] = j.object_name
+            tmp_dictionary["price"] = j.price
+            tmp_dictionary["link"] = j.website_link
+            tmp_dictionary["store"] = j.shop_name
+            tmp_dictionary["quantity"] = 1
+            tmp_list.append(tmp_dictionary)
+        tmp_external_dict["products"] = tmp_list
+        tmp_external_dict["costs"] = final_list[i][1]
+        total_list.append(tmp_external_dict)
+    output_data = {}
+    output_data["sets"] = total_list
+    return output_data
 
 def save_output(output_data, path_to_output):
 	out = open(path_to_output,"w+")
@@ -107,12 +118,6 @@ def main():
 	input_db = read_db_names()
 	product_list = list_of_products(input_db, 'tmp\\')
 	final_list = find_optimal(product_list)
-
-
-	# for o in final_list[0][0]:
-	# 	print(o.shop_name, o.delivery_price, o.object_name)
-	# print("\n\n")
-
 	
 	output_data = result_to_dict(final_list)
 	save_output(output_data, "tmp\\output_data.txt")
