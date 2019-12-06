@@ -16,5 +16,6 @@ def delete(path):
         shutil.rmtree(path)
     except OSError:
         print("Deletion of the directory %s failed" % path)
+        delete(path)
     else:
         print("Successfully deleted the directory %s" % path)

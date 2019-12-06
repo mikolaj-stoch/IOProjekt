@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request
 import json
 import os
-import sqlite3
-import itertools
-import sys
 import optimalizer
 import time
 import tmp_dir_manager
@@ -54,4 +51,4 @@ def authors():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    app.run()
