@@ -1,7 +1,5 @@
 input_data.txt
 output_data.txt
-products_from_search_page.db
-Ceneo/tmp/*
 
 # Editors
 .vscode/

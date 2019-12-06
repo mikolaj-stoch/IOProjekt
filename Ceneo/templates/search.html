@@ -37,7 +37,7 @@
 						<div class="input-group-prepend">
 							<span class="input-group-text">{{i+1}}</span>
 						</div>
-						<input type="text" class="form-control" name="productName{{i}}">
+						<input type="text" class="form-control" name="productName{{i}}" pattern="([^\x22]|\\\x22)*">
 					</div>
 				</div>
 				<div class="col">

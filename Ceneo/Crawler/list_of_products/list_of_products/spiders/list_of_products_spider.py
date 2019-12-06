@@ -17,6 +17,7 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
         self.product_id = get_row(str(self.product_number))
         url = 'http://ceneo.pl' + self.product_id # Link
         self.start_urls = [url] # Link
+        self.counter = 0
 
     def parse(self, response):
         if self.product_id != '':
@@ -72,9 +73,10 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
                 items['number_of_reviews'] = int(number_of_reviews[x])
                 yield items # Yield do takie return
 
-            if check(self.product_number) < 5:
+            if check(self.product_number) < 5 and self.counter < 5:
                 add_next_link()
                 url_new = 'http://ceneo.pl' + get_row(str(self.product_number))
+                self.counter = self.counter + 1
                 yield response.follow(url_new, callback=self.parse)
 
         else:

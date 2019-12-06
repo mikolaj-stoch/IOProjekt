@@ -1,14 +1,11 @@
 # -*- coding: utf-8 -*-
 import scrapy
 from scrapy.crawler import CrawlerProcess
-from scrapy.utils.project import get_project_settings
+from list_of_products.items import ListOfProductsItem
+from list_of_products.database_connector import get_row
+from list_of_products.database_connector import check
+from list_of_products.database_connector import add_next_link
 
-from Ceneo.Crawler.list_of_products_SCRIPT.list_of_products.items import ListOfProductsItem
-from Ceneo.Crawler.list_of_products_SCRIPT.list_of_products.database_connector import get_row
-from Ceneo.Crawler.list_of_products_SCRIPT.list_of_products.database_connector import check
-from Ceneo.Crawler.list_of_products_SCRIPT.list_of_products.database_connector import add_next_link
-
-import sys
 
 class ListOfProductsSpiderSpider(scrapy.Spider):
 
@@ -68,7 +65,7 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
             for x in range(len(price_one_product)):
                 items['name_of_object'] = name_of_object[x]
                 items['price_one_product'] = float(price_one_product[x]) + float(penny[x][1:]) * 0.01
-                items['website_link'] = 'http://ceneo.pl' + website_link[x]
+                items['website_link'] = website_link[x]
                 items['shop_name'] = shop_name[x]
                 items['delivery_info'] = final_delivery_information[x]
                 items['shop_rating'] = shop_rating[x]
@@ -82,14 +79,3 @@ class ListOfProductsSpiderSpider(scrapy.Spider):
 
         else:
             print("Na stronie nie ma wystaczajacej liczby informacji.")
-
-
-def main(product_number):
-    s = get_project_settings()
-    s['product_number'] = product_number
-    process = CrawlerProcess(s)
-    process.crawl(ListOfProductsSpiderSpider, product_number=str(product_number))
-    process.start()
-
-if __name__ == "__main__":
-    main(int(sys.argv[1]))
